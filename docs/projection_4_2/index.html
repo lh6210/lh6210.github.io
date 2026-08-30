@@ -1,0 +1,330 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reid's Math Notes</title>
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" href="../static/prism.css">
+
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- put configuration ahead of loading statements -->
+    <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'],['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        processHtmlClass: "arithmatex"
+      }
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+
+    
+
+
+
+</head>
+<body>
+<nav class="layout-c-60 navbar navbar-expand-lg navbar-light bg-primary bg-opacity-10 text-dark">
+  <div class="container-fluid">
+      <a class="navbar-brand" href="/">Reid's Math Notes | Home</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse"  id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mx-5 mb-lg-0 ">
+        <li class="nav-item">
+            <a class="nav-link" href= "/others/" >Others</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href= "/knots/" >Knots</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">About</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+    
+    
+    <div class="layout-c-60 mt-5">
+        <!-- page layout is set at 60% including title and body -->
+
+        <!-- page title -->
+        <div class='txt-center'>
+            <h5> Projections - Chapter 4 (4.2) </h5>
+            <small> &#128197Published on September 16, 2022   &#9749Keywords: Matrix, Sympy  </small> 
+        </div>
+        
+        <!-- page body -->
+        <div class="container-fluid ">
+
+  <!-- anchors -->
+  <div class='txt-center mt-3'>
+    <div class='right-arrow'>
+      <a href="#notes" >NOTES</a> 
+    </div>
+    <div class="right-arrow">
+      <a href="#lab">LAB</a> 
+    </div>
+  </div>
+
+  <!-- blog body -->
+  <div class='mt-5'>
+
+    <div>
+
+      <h6 id="notes">NOTES: </h6>
+
+      <!-- \left( \begin{smallmatrix}  \end{smallmatrix}  \right) -->
+      <ul class='divGap-0_6em'>
+        <li>
+          Projection matrix onto the z axis in $R^3$:
+          $
+          P_1 = \begin{bmatrix}  0 \; 0 \; 0 \\ 0 \; 0 \; 0 \\ 0 \; 0 \; 1  \end{bmatrix}
+          $
+          <div>
+          So that for any vector $\mathbf{b} \in R^3 = \begin{bmatrix}  b_1  \\ b_2 \\ b_3    \end{bmatrix} $, 
+          $
+          P_1 \mathbf{b} = \begin{bmatrix}  0 \; 0 \; 0 \\ 0 \; 0 \; 0 \\ 0 \; 0 \; 1  \end{bmatrix}  \begin{bmatrix}  b_1  \\ b_2 \\ b_3    \end{bmatrix} =  \begin{bmatrix}  0  \\ 0 \\ b_3    \end{bmatrix} 
+          $
+
+          </div>
+        </li>
+
+        <li>
+          Projection matrix onto the xy plane in $R^3$:
+          $
+          P_2 = \begin{bmatrix}  1 \; 0 \; 0 \\ 0 \; 1 \; 0 \\ 0 \; 0 \; 0  \end{bmatrix}
+          $
+          <div>
+          So that for any vector $\mathbf{b} \in R^3 = \begin{bmatrix}  b_1  \\ b_2 \\ b_3    \end{bmatrix} $, 
+          $
+          P_2 \mathbf{b} = \begin{bmatrix}  1 \; 0 \; 0 \\ 0 \; 1 \; 0 \\ 0 \; 0 \; 0  \end{bmatrix}  \begin{bmatrix}  b_1  \\ b_2 \\ b_3    \end{bmatrix} =  \begin{bmatrix}  b_1  \\ b_2 \\ 0    \end{bmatrix} 
+          $
+          </div>
+
+        </li>
+
+        <li>
+          In the example above, $P_1 \mathbf{b} + P_2 \mathbf{b} = \mathbf{b}$; $P_1 \mathbf{b} \perp P_2 \mathbf{b}  $; $P_1 + P_2 = I$; z axis and xy plane are orthogonal complements in $R^3$; $ \textrm{dim}(P_1) + \textrm{dim}(P_2) = 1 +2 = 3 $. 
+        </li>
+
+        <li>In 3d space, the z axis and the xy plane are orthogonal complements. Their dimensions add to 1 + 2 = 3. </li>
+
+
+        <li>
+          Project a line $\mathbf{b}$ onto a line $\mathbf{a}$:
+          <div>
+          $
+          \exists \; \hat{x} \in R \;  \textrm{such that} \; \mathbf{e} = (\mathbf{b} - \hat{x} \cdot \mathbf{a}) \perp \mathbf{a}
+          \Rightarrow  \mathbf{a} \cdot  (\mathbf{b} - \hat{x} \cdot \mathbf{a})  = 0
+          \Rightarrow \mathbf{p} = \hat{x} \cdot \mathbf{a} = \frac{\mathbf{a} \mathbf{a}^T }{\mathbf{a}^T \mathbf{a}}  \mathbf{b}
+          $;
+          </div>
+          <div>
+            Projection matrix $P = \frac{\mathbf{a} \mathbf{a}^T }{\mathbf{a}^T \mathbf{a}} $,  $P^2  = P$     and $\mathbf{p} = P \mathbf{b}$. The projection matrix is a column times a row, which has the dimension m by m, but its rank is one. We are projecting onto a one-dimensional subspace, the line through $\mathbf{a}$. That line is the column space of $P$.
+          </div>
+          <div>
+            If the vector $\mathbf{a}$ is doubled, the matrix $P$ stays the same. If the matrix is squared, $P^2$ equals $P$. Projecting a second time doesn't change anything. So $P^2 = P$.
+
+          </div>
+          <div>
+            When $P$ projects onto one subspace, $I -P $ projects onto the perpendicular subspace: $(I - P) \mathbf{b} = \mathbf{b} - P \mathbf{b} = \mathbf{b} - \mathbf{p} = \mathbf{e}$.
+          </div>
+        </li>
+
+        <li>
+          Project a line $\mathbf{b}$ onto a subspace:
+          <div>
+            Suppose the subspace in $R^m$ is spanned by $n$ vectors $\mathbf{a}_1, \mathbf{a}_2, \dots,   \mathbf{a}_n, n \le m $. We are projecting each $\mathbf{b} \in R^m$ onto the subspace spanned by the $\mathbf{a}$'s.
+          </div>
+          <div>
+          $
+          \textrm{Let matrix } A = (a_1, a_2, \cdots, a_n ). \;     \exists \; \mathbf{x} \in R^n \;  \textrm{such that} \; A \mathbf{x} \; \textrm{is the projection of } \mathbf{b};
+          \mathbf{e} = (\mathbf{b} - A \mathbf{x}) \perp C(A) \Rightarrow  \mathbf{e} = (\mathbf{b} - A \mathbf{x}) \in N(A^T) $
+          </div>
+
+          <div>
+          $
+          \Rightarrow  A^T \mathbf{e} = A^T (\mathbf{b} - A \mathbf{x}) = 0     
+          \Rightarrow \mathbf{p} = A \mathbf{x} = A(A^TA)^{-1}A^T \mathbf{b}
+          $;
+          </div>
+
+          <div>
+            Projection matrix $P = A(A^TA)^{-1}A^T$,  $P^2  = P$     and $\mathbf{p} = P \mathbf{b}$.
+          </div>
+          <div>
+            $I -P $ is another projection matrix: $(I - P) \mathbf{b} = \mathbf{b} - P \mathbf{b} = \mathbf{b} - \mathbf{p} = \mathbf{e}$.
+          </div>
+        </li>
+
+        <li>
+          $A^TA$ is invertible if and only if $A$ has linearly independent columns (prove $A^TA$ has the same nullspace as $A$).
+        </li>
+
+
+      </ul>
+    </div>
+
+    <div class='my-5 divGap-1_6em'>
+      <h6 id='lab'>LAB:</h6>
+
+      <div>
+        <div>Preliminary Setup:</div>
+        <pre><code class='language-python'>
+          from sympy.interactive.printing import init_printing
+          init_printing(use_unicode=True)
+          from sympy.matrices import Matrix
+          from sympy import symbols, sqrt, Rational, eye</code></pre>
+      </div>
+
+
+      <div>
+        <div>
+          1) &#128037;  Exercise 3: Find a basis for each of the four subspaces associated with $A$:
+
+          $$
+          A = \begin{pmatrix} 0 & 1 & 2 & 3 & 4 \\ 0 & 1 & 2 & 4 & 6 \\ 0 & 0 & 0 & 1 & 2 \end{pmatrix}  = \begin{pmatrix}  1 & 0 & 0 \\ 1 & 1 & 0 \\ 0 & 1 & 1 \end{pmatrix} \begin{pmatrix} 0 & 1 & 2 & 3 & 4 \\ 0 & 0 & 0 & 1 & 2 \\ 0 & 0 & 0 & 0 & 0 \end{pmatrix} 
+          $$
+        </div>
+
+        <ol class="list-group list-group-numbered mt-3">
+
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">Analysis, basis of $C(A)$ and $C(A^T)$:</div>
+
+              <div>
+                According to "Rank Two Matices" in the textbook, the form of $A = CR$ or $R$ tells us the rank of $A$, pivot columns and rows of $A$.
+              </div>
+
+              <div>
+                So the pivot columns of $A$ are #1 and #3; the pivot rows of $A$ or $R$ are #0 and #1.The rank of matrix $A$ is $2$.
+              </div>
+              <br>
+
+              <div>
+                Immediately, we know the basis of $C(A)$ is:
+                $$
+                \left(  \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 3 \\ 4 \\ 1 \end{pmatrix}  \right)
+                $$
+
+                The basis of $C(A^T)$ is:
+                $$
+                \left(  \begin{pmatrix} 0 \\ 1 \\ 2 \\ 3 \\ 4 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 2 \\ 4 \\ 6 \end{pmatrix}  \right)
+                $$
+              </div>
+            </div>
+          </li>
+
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">basis of $N(A)$</div>
+
+                type $R$ in Sympy:
+                <!--  matrix A -->
+                <pre class='command-line no-line-numbers' data-prompt='>>>'>  
+                <code class="language-python">
+                  R = Matrix([[0, 1, 2, 3, 4], [0, 0, 0, 1, 2], [0, 0, 0, 0, 0]]); R 
+                </code></pre>
+                <!--  \left( \begin{smallmatrix} 1 \, 2 \\ 3 \, 4 \end{smallmatrix} \right) -->
+                $$ \left( \begin{matrix} 0 & 1 & 2 & 3 & 4 \\ 0 & 0 & 0 & 1 & 2 \\ 0 & 0 & 0 & 0 & 0 \end{matrix} \right) $$ 
+
+
+                <!-- vector b -->
+                <pre  class='command-line no-line-numbers' data-prompt='>>>'     >  
+                <code class="language-python">
+                R.nullspace()
+                </code></pre>
+                <!--  \left( \begin{smallmatrix} 1 \, 2 \\ 3 \, 4 \end{smallmatrix} \right) -->
+                $$ \left( \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \\ 0 \end{pmatrix},  \begin{pmatrix} 0 \\ -2 \\ 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 2 \\ 0 \\ -2 \\ 1 \end{pmatrix}  \right) $$ 
+            </div>
+          </li>
+
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">basis of $N(A^T)$</div>
+
+                type $A$ in Sympy:
+                <!--  matrix A -->
+                <pre class='command-line no-line-numbers' data-prompt='>>>'>  
+                <code class="language-python">
+                  A = Matrix([[0, 1, 2, 3, 4], [0, 1, 2, 4, 6], [0, 0, 0, 1, 2]]); A 
+                </code></pre>
+                <!--  \left( \begin{smallmatrix} 1 \, 2 \\ 3 \, 4 \end{smallmatrix} \right) -->
+                $$ \left( \begin{matrix} 0 & 1 & 2 & 3 & 4 \\ 0 & 1 & 2 & 4 & 6 \\ 0 & 0 & 0 & 1 & 2 \end{matrix} \right) $$ 
+
+
+                <!-- vector b -->
+                <pre  class='command-line no-line-numbers' data-prompt='>>>'     >  
+                <code class="language-python">
+                A.T.nullspace()
+                </code></pre>
+                <!--  \left( \begin{smallmatrix} 1 \, 2 \\ 3 \, 4 \end{smallmatrix} \right) -->
+                $$ \left( \begin{pmatrix} 1 \\ -1 \\ 1 \end{pmatrix} \right) $$ 
+
+            </div>
+          </li>
+
+        </ol>
+      </div>
+
+
+      <!--
+      <div>
+        Reference: 
+
+        <div>
+          <a href="https://docs.sympy.org/latest/tutorial/matrices.html">Sympy manual - matrices </a>
+
+        </div>
+      </div>
+      -->
+
+
+    </div>
+
+  </div>
+
+
+
+
+</div>
+
+
+        <!-- comment box -->
+        <script src="https://utteranc.es/client.js"
+                repo="lh6210/lh6210.github.io"
+                issue-term="title"
+                label="comment"
+                theme="github-light"
+                crossorigin="anonymous"
+                async>
+        </script>
+
+    </div>
+
+
+
+
+
+    <script src='../static/prism.js'></script>
+</body>
+</html>
